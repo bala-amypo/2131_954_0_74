@@ -14,6 +14,11 @@ public class Studctl{
     private Studentity ser;
 
     @PostMapping("/add")
+    public Studentity addStudent(@RequestBody Studentity st){
+        return ser.saveData(st);
+
+    }
+    @GetMapping("/getall")
     
 }
 
