@@ -6,6 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.entity.Studentity;
-import com.exaple.demo.service.Stud
+import com.exaple.demo.service.Studservice;
+@RestController
+@RequesMapping("/student")
+public class Studctl{
+    @Autowired
+    private Studentity ser;
+
+    @PostMapping("/add")
+    
+}
 
 
