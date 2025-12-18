@@ -1,0 +1,25 @@
+@Service
+public class VehicleServiceImpl implements VehicleService {
+
+    private final VehicleRepository vehicleRepo;
+    private final UserRepository userRepo;
+
+    public VehicleServiceImpl(VehicleRepository vehicleRepo,
+                              UserRepository userRepo) {
+        this.vehicleRepo = vehicleRepo;
+        this.userRepo = userRepo;
+    }
+
+    @Override
+    public Vehicle addVehicle(Long userId, Vehicle vehicle) {
+        if (vehicle.getCapacityKg() <= 0) {
+            throw new IllegalArgumentException("Capacity must be positive");
+        }
+
+        User user = userRepo.findById(userId)
+            .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+
+        vehicle.setUser(user);
+        return vehicleRepo.save(vehicle);
+    }
+}
